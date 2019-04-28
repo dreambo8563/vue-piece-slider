@@ -1,5 +1,5 @@
 import Transform from "./transform";
-import anime from "animejs/lib/anime.es.js";
+import anime from "animejs";
 // Utils
 
 function stringContains(str, text) {
@@ -506,22 +506,6 @@ Pieces.prototype = {
     return item.pieces.every(p => p.w === 0 && p.h === 0);
   },
 
-  renderGhost(options, item) {
-    const o = this.o[item.index];
-    const fontSize = is.fnc(o.fontSize) ? o.fontSize() : o.fontSize;
-    console.log(item.ghost);
-    if (item.ghost && o.text) {
-      options.ctx.textBaseline = "bottom";
-      options.ctx.font = `${o.fontWeight} ${fontSize}px ${o.fontFamily}`;
-      options.ctx.strokeStyle = o.color;
-      options.ctx.setLineDash(item.ghostDashArray);
-      options.ctx.lineDashOffset = item.ghostDashOffset;
-      options.ctx.globalAlpha = item.ghostOpacity;
-      options.ctx.strokeText(o.text, item.x, item.y + item.height);
-      options.ctx.globalAlpha = 1;
-    }
-  },
-
   clearRect(o) {
     const t = new Transform();
     let newRedraw = false,
@@ -693,7 +677,6 @@ Pieces.prototype = {
         this.hoverItem = item;
       }
       this.renderPieces(o, item);
-      // this.renderGhost(o, item);
       this.renderDebug(o, item);
     });
   },

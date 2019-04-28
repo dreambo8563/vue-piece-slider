@@ -106,7 +106,8 @@ export default {
   },
   methods: {
     click() {
-      console.log("object");
+      // eslint-disable-next-line no-console
+      console.info("object");
     }
   }
 };

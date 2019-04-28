@@ -25,7 +25,7 @@
   </div>
 </template>
 <script>
-import anime from "animejs/lib/anime.es.js";
+import anime from "animejs";
 // window.anime = anime
 import Pieces from "./piece/index.js";
 // Options for images
