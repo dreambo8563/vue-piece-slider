@@ -39,6 +39,7 @@
 
   /* Navigation buttons */
   .pieces-slider__button {
+    user-select: none;
     display: none;
     position: absolute;
     left: 0;
