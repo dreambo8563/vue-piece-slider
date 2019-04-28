@@ -9,7 +9,7 @@
           name="extraX"
           :min="-500"
           :max="500"
-        />
+        >
       </div>
       <div>
         <label for="extraY">ExtraY</label>
@@ -19,17 +19,11 @@
           name="extraY"
           :min="-500"
           :max="500"
-        />
+        >
       </div>
       <div>
         <label for="angle">Angle</label>
-        <input
-          type="range"
-          v-model.number="options.angle"
-          name="angle"
-          :min="0"
-          :max="360"
-        />
+        <input type="range" v-model.number="options.angle" name="angle" :min="0" :max="360">
       </div>
       <div>
         <label for="piecesWidth">PiecesWidth</label>
@@ -39,17 +33,11 @@
           name="piecesWidth"
           :min="0"
           :max="200"
-        />
+        >
       </div>
       <div>
         <label for="ty">Ty (startY)</label>
-        <input
-          type="range"
-          v-model.number="options.ty"
-          name="ty"
-          :min="-300"
-          :max="300"
-        />
+        <input type="range" v-model.number="options.ty" name="ty" :min="-300" :max="300">
       </div>
       <div>
         <label for="piecesSpacing">PiecesSpacing</label>
@@ -59,7 +47,7 @@
           name="piecesSpacing"
           :min="0"
           :max="100"
-        />
+        >
       </div>
     </div>
     <Slider
@@ -82,11 +70,11 @@ export default {
     return {
       activeIndex: 0,
       list: [
-        "/img/1.jpg",
-        "/img/2.jpg",
-        "/img/3.jpg",
-        "/img/4.jpg",
-        "/img/5.jpg"
+        "./img/1.jpg",
+        "./img/2.jpg",
+        "./img/3.jpg",
+        "./img/4.jpg",
+        "./img/5.jpg"
       ],
       options: {
         angle: 30,
