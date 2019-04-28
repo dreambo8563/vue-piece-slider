@@ -1,5 +1,10 @@
 # vue-piece-slider
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors) [![Greenkeeper badge](https://badges.greenkeeper.io/dreambo8563/vue-piece-slider.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/dreambo8563/vue-piece-slider.svg?branch=master)](https://travis-ci.org/dreambo8563/vue-piece-slider)
+[![Known Vulnerabilities](https://snyk.io/test/github/dreambo8563/vue-piece-slider/badge.svg?targetFile=package.json)](https://snyk.io/test/github/dreambo8563/vue-piece-slider?targetFile=package.json)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![npm](https://img.shields.io/npm/dt/vue-piece-slider.svg?style=flat)
 
 This library is a simplified Vue portal of an awesome [Codrops Article](https://tympanus.net/codrops/2018/02/21/animated-fragment-slideshow/) by [Luis Manuel](https://tympanus.net/codrops/author/luis/) (original [source](https://github.com/lmgonzalves/pieces-slider)).
 
