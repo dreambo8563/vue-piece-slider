@@ -1,4 +1,9 @@
 .vue-piece-slider {
+  &:hover {
+    .pieces-slider__button {
+      display: inline-block;
+    }
+  }
   position: relative;
   text-align: center;
   padding: 0;
@@ -34,23 +39,25 @@
 
   /* Navigation buttons */
   .pieces-slider__button {
+    display: none;
     position: absolute;
     left: 0;
     top: 50%;
-    width: 100px;
-    height: 100px;
-    margin: -25px 0 0 0;
-    background-color: #5104ab;
-    color: #fff;
-    font-family: inherit;
-    font-weight: bold;
     border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(31, 45, 61, 0.11);
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1em;
+    font-weight: bold;
     cursor: pointer;
     transition: 0.1s background-color;
-  }
-
-  .pieces-slider__button:hover {
-    background: #5f3abf;
+    transform: translateY(-50%);
   }
 
   .pieces-slider__button--next {

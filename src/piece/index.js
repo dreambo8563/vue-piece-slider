@@ -138,38 +138,17 @@ Pieces.prototype = {
   init(options) {
     this.initOptions(options);
     this.initCanvas(options);
-    this.initEvents(options);
+    // this.initEvents(options);
     if (options.items.length) {
       options.items.forEach(item => {
         this.setItemOptions(options, item.options);
         switch (item.type) {
           case "image":
             return this.initImage(item.value);
-          case "text":
-            return this.initText(item.value);
-          case "path":
-            return this.initPath(item.value);
         }
       });
     }
-    if (options.image.length) {
-      options.image.forEach(image => {
-        this.setItemOptions(options);
-        this.initImage(image);
-      });
-    }
-    if (options.text.length) {
-      options.text.forEach(text => {
-        this.setItemOptions(options);
-        this.initText(text);
-      });
-    }
-    if (options.path.length) {
-      options.path.forEach(path => {
-        this.setItemOptions(options);
-        this.initPath(path);
-      });
-    }
+
     if (this.drawList.length) {
       this.initPieces(options);
       this.loop(options);
@@ -224,23 +203,6 @@ Pieces.prototype = {
     }
     options.canvas.width = this.width = options.canvas.clientWidth;
     options.canvas.height = this.height = options.canvas.clientHeight;
-  },
-
-  initEvents(options) {
-    options.canvas.onmousemove = e => {
-      const rect = options.canvas.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const scaleX = rect.width / options.canvas.offsetWidth;
-      const scaleY = rect.height / options.canvas.offsetHeight;
-      this.mouseX = x * (1 / scaleX);
-      this.mouseY = y * (1 / scaleY);
-    };
-
-    options.canvas.onmouseout = () => {
-      this.mouseX = undefined;
-      this.mouseY = undefined;
-    };
   },
 
   setItemOptions(options, itemOptions) {
@@ -320,72 +282,6 @@ Pieces.prototype = {
       image.width,
       image.height
     );
-    this.drawList.push(canvas);
-  },
-
-  initText(text) {
-    const o = this.o[this.o.length - 1];
-    let padding = is.fnc(o.padding) ? o.padding() : o.padding;
-    padding = padding
-      ? padding.split(" ").map(p => parseFloat(p))
-      : [0, 0, 0, 0];
-    const fontSize = is.fnc(o.fontSize) ? o.fontSize() : o.fontSize;
-    const { canvas, ctx } = createCanvas();
-    ctx.textBaseline = "bottom";
-    ctx.font = `${o.fontWeight} ${fontSize}px ${o.fontFamily}`;
-    canvas.width = ctx.measureText(text).width + padding[1] + padding[3];
-    canvas.height = fontSize + padding[0] + padding[2];
-    if (o.backgroundColor) {
-      ctx.fillStyle = o.backgroundColor;
-      if (o.backgroundRadius) {
-        roundRect(
-          ctx,
-          1,
-          1,
-          canvas.width - 2,
-          canvas.height - 2,
-          o.backgroundRadius
-        );
-        ctx.fill();
-      } else {
-        ctx.fillRect(1, 1, canvas.width - 2, canvas.height - 2);
-      }
-    }
-    ctx.textBaseline = "bottom";
-    ctx.font = `${o.fontWeight} ${fontSize}px ${o.fontFamily}`;
-    ctx.fillStyle = o.color;
-    ctx.fillText(text, padding[3], fontSize + padding[0]);
-    this.drawList.push(canvas);
-  },
-
-  initPath(path) {
-    const o = this.o[this.o.length - 1];
-    let padding = is.fnc(o.padding) ? o.padding() : o.padding;
-    padding = padding
-      ? padding.split(" ").map(p => parseFloat(p))
-      : [0, 0, 0, 0];
-    const { canvas, ctx } = createCanvas();
-    canvas.width = o.svgWidth + padding[1] + padding[3];
-    canvas.height = o.svgHeight + padding[0] + padding[2];
-    if (o.backgroundColor) {
-      ctx.fillStyle = o.backgroundColor;
-      if (o.backgroundRadius) {
-        roundRect(
-          ctx,
-          1,
-          1,
-          canvas.width - 2,
-          canvas.height - 2,
-          o.backgroundRadius
-        );
-        ctx.fill();
-      } else {
-        ctx.fillRect(1, 1, canvas.width - 2, canvas.height - 2);
-      }
-    }
-    ctx.translate(padding[3], padding[0]);
-    ctx.fillStyle = o.color;
-    ctx.fill(new Path2D(is.str(path) ? path : path.getAttribute("d")));
     this.drawList.push(canvas);
   },
 
@@ -613,6 +509,7 @@ Pieces.prototype = {
   renderGhost(options, item) {
     const o = this.o[item.index];
     const fontSize = is.fnc(o.fontSize) ? o.fontSize() : o.fontSize;
+    console.log(item.ghost);
     if (item.ghost && o.text) {
       options.ctx.textBaseline = "bottom";
       options.ctx.font = `${o.fontWeight} ${fontSize}px ${o.fontFamily}`;
@@ -796,7 +693,7 @@ Pieces.prototype = {
         this.hoverItem = item;
       }
       this.renderPieces(o, item);
-      this.renderGhost(o, item);
+      // this.renderGhost(o, item);
       this.renderDebug(o, item);
     });
   },
@@ -854,6 +751,7 @@ Pieces.prototype = {
       },
       options
     );
+
     const targets = this.getPieces(options.items);
     if (o.remove) {
       anime.remove(targets);
@@ -895,6 +793,7 @@ Pieces.prototype = {
       },
       options
     );
+
     this.animatePieces(o);
   },
 
@@ -914,7 +813,7 @@ Pieces.prototype = {
   }
 };
 
-Pieces.version = "1.0.0";
+// Pieces.version = "1.0.0";
 Pieces.random = anime.random;
-Pieces.extend = extend;
+// Pieces.extend = extend;
 export default Pieces;

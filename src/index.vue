@@ -1,6 +1,6 @@
 <template>
   <!-- Pieces Slider -->
-  <div class="pieces-slider vue-piece-slider">
+  <div v-on="$listeners" class="pieces-slider vue-piece-slider">
     <!-- Each slide with corresponding image -->
     <div v-for="(v, i) of list" :key="i" class="pieces-slider__slide">
       <img :ref="getImgRef(i)" class="pieces-slider__image" :src="v" alt />
@@ -8,11 +8,19 @@
     <!-- Canvas to draw the pieces -->
     <canvas class="pieces-slider__canvas"></canvas>
     <!-- Slider buttons: prev and next -->
-    <button class="pieces-slider__button pieces-slider__button--prev">
-      prev
+    <button
+      v-if="arrow"
+      @click="prevItem"
+      class="pieces-slider__button pieces-slider__button--prev"
+    >
+      &#x2b83;
     </button>
-    <button class="pieces-slider__button pieces-slider__button--next">
-      next
+    <button
+      v-if="arrow"
+      @click="nextItem"
+      class="pieces-slider__button pieces-slider__button--next"
+    >
+      &#x2b81;
     </button>
   </div>
 </template>
@@ -40,6 +48,14 @@ export default {
     value: {
       type: [String, Number],
       default: 0
+    },
+    options: {
+      type: Object,
+      default: () => ({})
+    },
+    arrow: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -62,18 +78,14 @@ export default {
         const slideImage = new Image();
         slideImage.onload = () => {
           if (++this.imagesReady == slidesNum) {
-            // console.log(slidesNum, this.imagesReady);
             this.initSlider();
-            // this.initEvents()
           }
         };
-        // console.log(this.$refs);
         // Push all elements for each slide with the corresponding options
-        console.log(this.$refs[this.getImgRef(i)]);
         this.items.push({
           type: "image",
           value: this.$refs[this.getImgRef(i)][0],
-          options: imageOptions
+          options: { ...imageOptions, ...this.options }
         });
         slideImage.src = this.list[i];
       }
@@ -86,18 +98,20 @@ export default {
 
       // Save the new Pieces instance
       this.piecesSlider = new Pieces({
-        canvas: ".pieces-slider__canvas",
-        items: this.items,
-        x: "centerAll",
-        y: "centerAll",
-        piecesSpacing: 1,
-        animation: {
-          duration: function() {
-            return Pieces.random(1000, 2000);
-          },
-          easing: "easeOutQuint"
-        }
-        // debug: true
+        ...{
+          canvas: ".vue-piece-slider .pieces-slider__canvas",
+          items: this.items,
+          x: "centerAll",
+          y: "centerAll",
+          piecesSpacing: 4,
+          animation: {
+            duration: function() {
+              return Pieces.random(1000, 2000);
+            },
+            easing: "easeOutQuint"
+          }
+        },
+        ...this.options
       });
       // Show current items: image, text and number
       this.showItems();
@@ -105,7 +119,6 @@ export default {
     // Show current items: image, text and number
     showItems() {
       // Show image pieces
-      console.log(this.piecesSlider);
       this.piecesSlider.showPieces({
         items: this.value,
         ignore: ["tx"],
@@ -139,28 +152,47 @@ export default {
       });
     },
     hideItems() {
-      this.piecesSlider.hidePieces({
-        items: [this.value]
-      });
+      if (this.piecesSlider) {
+        this.piecesSlider.hidePieces({
+          items: [this.value]
+        });
+      }
     },
     prevItem() {
-      this.hideItems();
-      const currentIndex =
-        this.value > 0 ? this.value - 1 : this.list.length - 1;
-      this.$emit("input", currentIndex);
-      this.showItems();
+      if (this.piecesSlider) {
+        this.hideItems();
+        const currentIndex =
+          this.value > 0 ? this.value - 1 : this.list.length - 1;
+        this.$emit("input", currentIndex);
+      }
     },
     nextItem() {
-      this.hideItems();
-      const currentIndex =
-        this.value < this.list.length - 1 ? this.value + 1 : 0;
-      this.$emit("input", currentIndex);
+      if (this.piecesSlider) {
+        this.hideItems();
+        const currentIndex =
+          this.value < this.list.length - 1 ? this.value + 1 : 0;
+        this.$emit("input", currentIndex);
+      }
+    },
+    init() {
+      this.initVar();
+      this.loadImg();
+    }
+  },
+  watch: {
+    value: function() {
       this.showItems();
+    },
+    options: {
+      handler: function() {
+        this.hideItems();
+        this.init();
+      },
+      deep: true
     }
   },
   mounted() {
-    this.initVar();
-    this.loadImg();
+    this.init();
   }
 };
 </script>
