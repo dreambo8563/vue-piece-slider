@@ -1,0 +1,67 @@
+.vue-piece-slider {
+  &:hover {
+    .pieces-slider__button {
+      display: inline-block;
+    }
+  }
+  position: relative;
+  text-align: center;
+  padding: 0;
+  display: inline-block;
+  width: 100%;
+  height: 400px;
+  /* Make all slides absolutes and hide them */
+  .pieces-slider__slide {
+    position: absolute;
+    right: 100%;
+    .pieces-slider__image {
+      max-width: 400px;
+      max-height: 200px;
+      display: none;
+    }
+  }
+
+  /* Define image dimensions and also hide them */
+
+  /* Canvas with viewport width and height */
+  .pieces-slider__canvas {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: 0.2s opacity;
+  }
+
+  /* Class for when we resize */
+  .pieces-slider__canvas--hidden {
+    opacity: 0;
+    transition-duration: 0.3s;
+  }
+
+  /* Navigation buttons */
+  .pieces-slider__button {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(31, 45, 61, 0.11);
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.1s background-color;
+    transform: translateY(-50%);
+  }
+
+  .pieces-slider__button--next {
+    left: auto;
+    right: 0;
+  }
+}
