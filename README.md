@@ -1,4 +1,5 @@
 # vue-piece-slider
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 This library is a simplified Vue portal of an awesome [Codrops Article](https://tympanus.net/codrops/2018/02/21/animated-fragment-slideshow/) by [Luis Manuel](https://tympanus.net/codrops/author/luis/) (original [source](https://github.com/lmgonzalves/pieces-slider)).
 
@@ -108,3 +109,15 @@ more params please follow the [package of Piece](https://github.com/lmgonzalves/
 - [Pieces](https://github.com/lmgonzalves/pieces) by Luis Manuel
 - Images by [Unsplash.com](https://unsplash.com/)
 - [anime.js](http://anime-js.com/) by Julian Garnier
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="https://dreambo8563.github.io/"><img src="https://avatars2.githubusercontent.com/u/6948318?v=4" width="100px;" alt="Vincent Guo"/><br /><sub><b>Vincent Guo</b></sub></a><br /><a href="https://github.com/dreambo8563/vue-piece-slider/commits?author=dreambo8563" title="Code">💻</a> <a href="https://github.com/dreambo8563/vue-piece-slider/commits?author=dreambo8563" title="Documentation">📖</a> <a href="#infra-dreambo8563" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
