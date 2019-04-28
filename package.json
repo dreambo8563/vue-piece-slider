@@ -1,20 +1,20 @@
 {
   "name": "vue-piece-slider",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "main": "dist/vue-piece-slider.umd.min.js",
   "author": "dreambo8563",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-piece-slider src/index.js",
     "test": "npm run build",
-    "pages": "vue-cli-service build --dest docs",
+    "pages": "DOC_ENV=true vue-cli-service build --dest docs",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "report": "vue-cli-service build --report",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "dependencies": {
-    "animejs": "^3.0.1",
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
   },
@@ -25,6 +25,7 @@
     "@vue/cli-service": "^3.6.0",
     "@vue/eslint-config-prettier": "^4.0.1",
     "@vue/test-utils": "1.0.0-beta.29",
+    "animejs": "^3.0.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
@@ -39,5 +40,28 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dreambo8563/vue-piece-slider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dreambo8563/vue-piece-slider/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "dist/*",
+    "src/*",
+    "package.json",
+    "*.js",
+    "README.md"
+  ],
+  "keywords": [
+    "vue",
+    "slider",
+    "carousel",
+    "portal",
+    "segment",
+    "piece"
+  ]
 }
