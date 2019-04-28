@@ -1,6 +1,6 @@
 {
   "name": "vue-piece-slider",
-  "version": "0.1.0",
+  "version": "0.1.1-beta.0",
   "private": false,
   "main": "dist/vue-piece-slider.umd.min.js",
   "author": "dreambo8563",
