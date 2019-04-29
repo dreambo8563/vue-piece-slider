@@ -13,14 +13,14 @@
       @click="prevItem"
       class="pieces-slider__button pieces-slider__button--prev"
     >
-      &#x2b83;
+      &laquo;
     </button>
     <button
       v-if="arrow"
       @click="nextItem"
       class="pieces-slider__button pieces-slider__button--next"
     >
-      &#x2b81;
+      &raquo;
     </button>
   </div>
 </template>

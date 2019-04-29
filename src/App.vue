@@ -9,11 +9,9 @@
           name="extraX"
           :min="-500"
           :max="500"
-        >
+        />
         <span class="range-slider__value">
-          {{
-          options.extraSpacing.extraX
-          }}
+          {{ options.extraSpacing.extraX }}
         </span>
       </div>
       <div>
@@ -24,16 +22,20 @@
           name="extraY"
           :min="-500"
           :max="500"
-        >
+        />
         <span class="range-slider__value">
-          {{
-          options.extraSpacing.extraY
-          }}
+          {{ options.extraSpacing.extraY }}
         </span>
       </div>
       <div>
         <label for="angle">Angle</label>
-        <input type="range" v-model.number="options.angle" name="angle" :min="0" :max="360">
+        <input
+          type="range"
+          v-model.number="options.angle"
+          name="angle"
+          :min="0"
+          :max="360"
+        />
         <span class="range-slider__value">{{ options.angle }}</span>
       </div>
       <div>
@@ -44,12 +46,18 @@
           name="piecesWidth"
           :min="0"
           :max="200"
-        >
+        />
         <span class="range-slider__value">{{ options.piecesWidth }}</span>
       </div>
       <div>
         <label for="ty">Ty (startY)</label>
-        <input type="range" v-model.number="options.ty" name="ty" :min="-300" :max="300">
+        <input
+          type="range"
+          v-model.number="options.ty"
+          name="ty"
+          :min="-300"
+          :max="300"
+        />
         <span class="range-slider__value">{{ options.ty }}</span>
       </div>
       <div>
@@ -60,7 +68,7 @@
           name="piecesSpacing"
           :min="0"
           :max="100"
-        >
+        />
         <span class="range-slider__value">{{ options.piecesSpacing }}</span>
       </div>
     </div>
