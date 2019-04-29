@@ -1,5 +1,6 @@
 # vue-piece-slider ([Demo](https://dreambo8563.github.io/vue-piece-slider/))
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9a935d579e394bd38efefd120947288e)](https://app.codacy.com/app/dreambo8563/vue-piece-slider?utm_source=github.com&utm_medium=referral&utm_content=dreambo8563/vue-piece-slider&utm_campaign=Badge_Grade_Dashboard)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors) [![Greenkeeper badge](https://badges.greenkeeper.io/dreambo8563/vue-piece-slider.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/dreambo8563/vue-piece-slider.svg?branch=master)](https://travis-ci.org/dreambo8563/vue-piece-slider)
 [![Known Vulnerabilities](https://snyk.io/test/github/dreambo8563/vue-piece-slider/badge.svg?targetFile=package.json)](https://snyk.io/test/github/dreambo8563/vue-piece-slider?targetFile=package.json)
